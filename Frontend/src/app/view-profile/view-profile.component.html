@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="card"  *ngFor="let studnet of students; let i = index">
+        <h5 class="card-header" *ngIf="i!=0">{{ studnet.name }}</h5>
+        <div class="card-body">
+          <p class="card-text" *ngIf="i!=0">Email: {{ studnet.email }}</p>
+          <p class="card-text" *ngIf="i!=0">Phone: {{ studnet.phone }}</p>
+          <!-- <a class="btn btn-primary" (click)="deleteUser(studnet.userId)">Delete</a> -->
+        </div>
+      </div>
+</div>

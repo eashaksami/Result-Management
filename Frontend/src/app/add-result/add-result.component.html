@@ -1,0 +1,62 @@
+<div class="container">
+    <form class="m-4">
+
+        <!-- <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Btch</label>
+          <select class="form-control" id="exampleFormControlSelect1" (change)="batchSelected($event.target.value)">
+            <option selected="selected" disabled>-- options --</option>
+            <option *ngFor="let batch of batches" [value]="batch">{{ batch }}</option>
+          </select>
+        </div> -->
+    
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Semester</label>
+          <select class="form-control" id="exampleFormControlSelect1"
+            (change)="semesterSelected($event.target.value)">
+            <option selected="selected" disabled>-- options --</option>
+            <option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</option>
+          </select>
+        </div>
+    
+        <div class="form-group">
+            <label for="exampleFormControlSelect1">Select Course</label>
+            <select class="form-control" id="exampleFormControlSelect1"
+              (change)="courseSelected($event.target.value)">
+              <option selected="selected" disabled>-- options --</option>
+              <option *ngFor="let course of courses" [value]="course.courseCode">{{ course.name }}</option>
+            </select>
+          </div>
+    
+    </form>
+    
+    <div class="card">
+        <h5 class="card-header">Add New Info</h5>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Batch" aria-describedby="basic-addon2"
+            [(ngModel)]="batch">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter StudentId" aria-describedby="basic-addon2"
+            [(ngModel)]="studentId">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Mid Marks" aria-describedby="basic-addon2"
+            [(ngModel)]="midNumber">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter CT Marks" aria-describedby="basic-addon2"
+            [(ngModel)]="ctMark">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Quiz Marks" aria-describedby="basic-addon2"
+            [(ngModel)]="quizMark">
+        </div>
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Enter Final Marks" aria-describedby="basic-addon2"
+            [(ngModel)]="finalMark">
+        </div>
+
+        <button class="btn btn-success mb-5" (click)="saveChanges()">Save Changes</button>
+    </div>
+
+</div>

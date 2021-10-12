@@ -1,0 +1,34 @@
+<div class="container">
+    <h1 style="text-align: center;">WELCOME {{ this.student.name.toUpperCase() }}</h1>
+    <br>
+    <!-- <button class="btn btn-primary mr-3" (click)="viewBatchResult()">View Batch Result</button>
+    <button class="btn btn-primary mr-3" (click)="viewCourseResult()">View Course Result</button>
+    <button class="btn btn-primary mr-3" (click)="viewStudentProfile()">View Student Profile</button> -->
+    
+    <table class="table table-bordered table-dark" style="color: red;">
+        <thead>
+          <tr>
+            <th scope="col">Course Name</th>
+            <th scope="col">Semester</th>
+            <th scope="col">Quiz Marks</th>
+            <th scope="col">Mid Marks</th>
+            <th scope="col">CT Marks</th>
+            <th scope="col">Final Marks</th>
+            <th scope="col">Total Marks</th>
+            <th scope="col">Gread</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let result of results">
+            <th scope="col">{{ result.name }}</th>
+            <th scope="col">{{ result.semester }}</th>
+            <th scope="col">{{ result.quizMarks }}</th>
+            <th scope="col">{{ result.midMarks }}</th>
+            <th scope="col">{{ result.classWorkMarks }}</th>
+            <th scope="col">{{ result.finalMarks }}</th>
+            <th scope="col">{{ result.totalMarks }}</th>
+            <th scope="col">{{ result.gread }}</th>
+          </tr>
+        </tbody>
+      </table>
+</div>

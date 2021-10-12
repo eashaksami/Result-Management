@@ -1,0 +1,92 @@
+<div class="container">
+    
+    <form class="m-4" *ngIf="!getResult">
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Btch</label>
+          <select class="form-control" id="exampleFormControlSelect1" (change)="batchSelected($event.target.value)">
+            <option selected="selected" disabled>-- options --</option>
+            <option *ngFor="let batch of batches" [value]="batch">{{ batch }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Select Semester</label>
+          <select class="form-control" id="exampleFormControlSelect1"
+            (change)="semesterSelected($event.target.value)">
+            <option selected="selected" disabled>-- options --</option>
+            <option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</option>
+          </select>
+        </div>
+
+    </form>
+
+    <button class="btn btn-success mt-3" (click) = "getData()" *ngIf="!getResult">Get Data</button>
+
+    <div *ngIf="getResult">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search by Name"
+          name="name" [(ngModel)]="name" (ngModelChange)="Search()">
+        </div>
+
+        <div class="card"  *ngFor="let result of results; let i = index">
+            <h5 class="card-header">{{ result.name }}</h5>
+            <div class="card-body">
+              <p class="card-text">Course Name: {{ result.courseName }}</p>
+              <p class="card-text">Course COde: {{ result.courseCode }}</p>
+              <p class="card-text">Batch: {{ result.batch }}</p>
+              <p class="card-text">Semester: {{ result.semester }}</p>
+              <p class="card-text">Mid: {{ result.midMarks }}</p>
+              <p class="card-text">Quiz: {{ result.quizMarks }}</p>
+              <p class="card-text">Class Work: {{ result.classWorkMarks }}</p>
+              <p class="card-text">Final: {{ result.finalMarks }}</p>
+              <p class="card-text">Total: {{ result.totalMarks }}</p>
+              <p class="card-text">Gread: {{ result.gread }}</p>
+
+              <button class="btn btn-success mr-3" (click)="changeInfo(i)">Change Info</button>
+              <button class="btn btn-success" (click)="deleteRecord(result.studentId, result.courseCode)">Delete Record</button>
+
+              <div *ngIf="onClickChange && i == index">
+                <h5 class="card-header">Add New Info</h5>
+        
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Mid</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter Mid Marks" aria-describedby="basic-addon2"
+                [placeholder]="result.midMarks"
+                [(ngModel)]="midNumber">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">CT</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter CT Marks" aria-describedby="basic-addon2"
+                [placeholder]="result.classWorkMarks"
+                [(ngModel)]="ctMark">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Quiz</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter Quiz Marks" aria-describedby="basic-addon2"
+                [placeholder]="result.quizMarks"
+                [(ngModel)]="quizMark">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon1">Final</span>
+                </div>
+                <input type="text" class="form-control" placeholder="Enter Final Marks" aria-describedby="basic-addon2"
+                [placeholder]="result.finalMarks"
+                [(ngModel)]="finalMark">
+              </div>
+
+              <button class="btn btn-success mb-5" 
+                (click)="editResult(result.studentId, result.courseCode, result.batch, result.semester, result.midMarks, result.classWorkMarks, result.quizMarks, result.finalMarks)">
+                Save Changes
+              </button>
+            </div>
+        </div>
+    </div>
+</div>
