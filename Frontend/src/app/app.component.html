@@ -1,0 +1,38 @@
+<!-- <div class="container">
+  <button class="btn btn-primary mt-3 mb-3" *ngIf="isLoggedIn" (click)="logout()">Log Out</button>
+  <div class="center">
+    <button class="btn btn-primary pl-3 pr-3 m-5" *ngIf="!isLoggedIn" (click)="SignUp()">Sign Up</button>
+    <button class="btn btn-primary pl-3 pr-3" *ngIf="!isLoggedIn" (click)="LogIn()">Log In</button>
+  </div>
+</div> -->
+
+
+<div class="container">
+  <header id="header" >
+      <div class="container d-flex">
+  
+        <div class="logo mr-auto">
+          <h1 class="text-light"><a routerLink="/"><span>Result Management</span></a></h1>
+        </div>
+  
+        <nav class="nav-menu d-none d-lg-block">
+            <ul>
+                <li><a routerLink="/admin/view-batch-result" *ngIf="isAdmin">Batch Result</a></li>
+                <li><a routerLink="admin/view-course-result" *ngIf="isAdmin">Course Result</a></li>
+                <li><a routerLink="/admin/add-result" *ngIf="isAdmin">Add Result</a></li>
+                <li><a routerLink="/admin/view-profile" *ngIf="isAdmin">Student Profile</a></li>
+                <li><a routerLink="/register" *ngIf="!isLoggedIn" class="btn-get-started scrollto">Sign Up</a></li>
+                <li><a routerLink="/login" *ngIf="!isLoggedIn" class="btn-login scrollto">Log In</a></li>
+                <li><a (click)="logout()" class="btn-get-started scrollto" *ngIf="isLoggedIn">Log Out</a></li>
+            </ul>
+        </nav>
+      </div>
+  </header>
+  <h1 class="text-center mt-5" *ngIf="!isLoggedIn">Result Management System</h1>
+
+</div>
+
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
